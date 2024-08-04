@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { Profissional, Servico } from "@barba/core";
+import { AgendaUtils, Profissional, Servico } from "@barba/core";
 import { DataUtils } from "@barba/core";
 import useUsuario from "../hooks/useUsuario";
 import useAPI from "../hooks/useAPI";
@@ -44,11 +44,7 @@ export function ProvedorAgendamento({
   }
 
   function duracaoTotal() {
-    const duracao = servicos.reduce((acc, atual) => {
-      return (acc += atual.qtdeSlots * 15);
-    }, 0);
-
-    return `${Math.trunc(duracao / 60)}h ${duracao % 60}m`;
+    return AgendaUtils.duracaoTotal(servicos);
   }
 
   function precoTotal() {
@@ -73,7 +69,7 @@ export function ProvedorAgendamento({
     if (!usuario?.email) return;
 
     await httpPost("agendamentos", {
-      emailCliente: usuario.email,
+      usuario: usuario,
       data: data!,
       profissional: profissional!,
       servicos: servicos,

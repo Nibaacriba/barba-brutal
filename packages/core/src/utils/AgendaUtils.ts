@@ -9,6 +9,14 @@ export default class AgendaUtils {
         }
     }
 
+    static duracaoTotal(servicos: { qtdeSlots: number }[]) {
+        const duracao = servicos.reduce((acc, atual) => {
+            return (acc += atual.qtdeSlots * 15)
+        }, 0)
+
+        return `${Math.trunc(duracao / 60)}h ${duracao % 60}m`
+    }
+
     private static gerarHorarios(horas: number[]) {
         return horas.reduce((horarios, hora) => {
             const todos = this.minutos.map((minuto) => {

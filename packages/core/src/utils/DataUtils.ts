@@ -21,4 +21,15 @@ export default class DataUtils {
             day: 'numeric',
         })
     }
+
+    static formatarDataEHora(data: Date): string {
+        return data.toLocaleDateString('pt-BR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+        })
+    }
 }

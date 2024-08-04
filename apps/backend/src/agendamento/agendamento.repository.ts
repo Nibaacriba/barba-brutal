@@ -10,7 +10,7 @@ export class AgendamentoRepository implements RepositorioAgendamento {
     await this.prismaService.agendamento.create({
       data: {
         data: agendamento.data,
-        emailCliente: agendamento.emailCliente,
+        usuario: { connect: { id: agendamento.usuario.id } },
         profissional: { connect: { id: agendamento.profissional.id } },
         servicos: {
           connect: agendamento.servicos.map((servico) => ({ id: servico.id })),
@@ -22,7 +22,9 @@ export class AgendamentoRepository implements RepositorioAgendamento {
   async buscarPorEmail(email: string): Promise<Agendamento[]> {
     return this.prismaService.agendamento.findMany({
       where: {
-        emailCliente: email,
+        usuario: {
+          email: email,
+        },
         data: {
           gte: new Date(),
         },
@@ -30,6 +32,7 @@ export class AgendamentoRepository implements RepositorioAgendamento {
       include: {
         servicos: true,
         profissional: true,
+        usuario: true,
       },
       orderBy: {
         data: 'desc',
@@ -56,9 +59,20 @@ export class AgendamentoRepository implements RepositorioAgendamento {
           lte: fimDoDia,
         },
       },
-      include: { servicos: true },
+      include: { servicos: true, usuario: true },
     });
 
     return resultado;
+  }
+
+  async excluir(id: number): Promise<void> {
+    await this.prismaService.agendamento.delete({
+      where: {
+        id: id,
+      },
+      include: {
+        servicos: true,
+      },
+    });
   }
 }

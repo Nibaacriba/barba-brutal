@@ -1,5 +1,8 @@
 export default interface Usuario {
-    email: string
+    id?: number
     nome: string
+    email: string
+    senha?: string
     telefone?: string
+    barbeiro?: boolean
 }

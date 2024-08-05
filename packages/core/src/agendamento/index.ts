@@ -1,6 +1,6 @@
-import Agendamento from "./Agendamento";
-import ObterHorariosOcupados from "./ObterHorariosOcupados";
-import RepositorioAgendamento from "./RepositorioAgendamento";
+import Agendamento from './Agendamento'
+import RepositorioAgendamento from './RepositorioAgendamento'
+import ObterHorariosOcupados from './ObterHorariosOcupados'
 
-export { ObterHorariosOcupados };
-export type { Agendamento, RepositorioAgendamento };
+export type { Agendamento, RepositorioAgendamento }
+export { ObterHorariosOcupados }

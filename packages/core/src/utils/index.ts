@@ -1,5 +1,5 @@
-import TelefoneUtils from "./TelefoneUtils";
-import DataUtils from "./DataUtils";
-import AgendaUtils from "./AgendaUtils";
+import AgendaUtils from './AgendaUtils'
+import DataUtils from './DataUtils'
+import TelefoneUtils from './TelefoneUtils'
 
-export { TelefoneUtils, AgendaUtils, DataUtils };
+export { AgendaUtils, DataUtils, TelefoneUtils }

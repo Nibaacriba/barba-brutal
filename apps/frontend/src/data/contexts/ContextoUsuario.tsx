@@ -2,8 +2,7 @@
 import { useRouter } from "next/navigation";
 import { createContext } from "react";
 import { Usuario } from "@barba/core";
-import useSessao from "../hooks/useSessao";
-import useAPI from "../hooks/useAPI";
+import { useAPI, useSessao } from "../hooks";
 
 export interface ContextoUsuarioProps {
   carregando: boolean;

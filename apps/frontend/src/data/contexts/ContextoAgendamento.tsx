@@ -1,8 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import { AgendaUtils, Profissional, Servico } from "@barba/core";
 import { DataUtils } from "@barba/core";
-import useUsuario from "../hooks/useUsuario";
-import useAPI from "../hooks/useAPI";
+import { useAPI, useUsuario } from "../hooks";
 
 interface ContextoAgendamentoProps {
   profissional: Profissional | null;
